@@ -1,7 +1,24 @@
 #-------------------
 global:
+  for: für
 #-------------------
 teacherMode:
   exportCSVNavLabel: Alles als CSV exportieren
 #-------------------
+genericErrors:
+  noRef: Es gibt keine Referenz für
+  reference: Referenz
+  existsMoreThanOnce: exististiert mehr als einmal!
+  noAuthor: Kein(e) Autor(en) (Feld 'author') angegeben!
+  moreThanThreeAuthors: Mehr als 3 Autoren (Feld 'author') - ist das so gewünscht?
+  authorDoesntExist: Autor*in in Feld 'author' exististiert nicht
+  doubleAcronym: Acronym existiert mehrfach! Acronyms müssen eindeutig sein (innerhalb eines Artefact-Typs)
+  acronymMissing: Acronym fehlt!
+#-------------------
+authors:
+  dtLabel: Autor(en)
+#-------------------
 interviews:
+  transcriptUrlErrMsg: transcriptUrl fehlt!
+  questionnaireUrlErrMsg: questionnaireUrl fehlt!
+  stakeholderPurpose: zugehöriger Stakeholder

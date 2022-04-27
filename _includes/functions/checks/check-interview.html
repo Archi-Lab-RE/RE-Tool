@@ -7,6 +7,10 @@
 
 {% include /functions/checks/generic/check-generic-aspects.html myArtefact=artefact
 		myErrorString="" myWarningString="" %}
+{% assign myPurpose = site.translations[site.lang].interviews.stakeholderPurpose %}
+{% include /functions/checks/generic/check-generic-refs.html myArtefact=artefact myCheckedRef=artefact.stakeholder
+		myCheckedRefType="stakeholder" asList=false emptyMeansError=true
+		myPurpose=myPurpose myErrorString=errorString myWarningString=warningString %}
 
 {% assign errorList = errorString | split: ";" %}
 {% assign warningList = warningString | split: ";" %}
@@ -14,7 +18,19 @@
 
 {% comment %} ***** Error/Warning Numbers 710 - 729 reserved for Interview **** {% endcomment %}
 
-{% comment %}---------- ??? add here ??? -----------{% endcomment %}
+{% comment %}---------- questionnaireUrl -----------{% endcomment %}
+{% if artefact.questionnaireUrl == Nil %}
+	{% assign myMsg = site.translations[site.lang].interviews.questionnaireUrlErrMsg %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="w710" msg=myMsg %}
+	{% assign warningList = warningList | push: out_msg %}
+{% endif %}
+
+{% comment %}---------- transcriptUrl -----------{% endcomment %}
+{% if artefact.transcriptUrl == Nil %}
+	{% assign myMsg = site.translations[site.lang].interviews.transcriptUrlErrMsg %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="w711" msg=myMsg %}
+	{% assign warningList = warningList | push: out_msg %}
+{% endif %}
 
 {% assign errorString = errorList | join: ";" %}
 {% assign warningString = warningList | join: ";" %}

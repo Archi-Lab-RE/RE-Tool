@@ -17,6 +17,8 @@
 {% endif %}
 
 {% comment %}---------- acronym -----------{% endcomment %}
+{% assign doubleAcronym = site.translations[site.lang].genericErrors.doubleAcronym %}
+{% assign acronymMissing = site.translations[site.lang].genericErrors.acronymMissing %}
 {% if artefact.acronym %}
 	{% assign thisType = artefact.type %}
 	{% assign thisAcronym = artefact.acronym %}
@@ -26,43 +28,43 @@
 	{% assign collection = site[collectionName] %}
 	{% assign foundArtefacts = collection | where:"acronym", thisAcronym %}
 	{% if foundArtefacts.size > 1 %}
-		{% assign myMsg = "Acronym '" | append: thisAcronym |
-			append: "' existiert mehrfach! Acronyms müssen eindeutig sein (innerhalb eines Artefact-Typs)." %}
+		{% assign myMsg = doubleAcronym | append: ": " | append: thisAcronym %}
 		{% include /functions/define-message.html ignore=artefact.ignore msgno="e002" msg=myMsg %}
 		{% assign errorList = errorList | push: out_msg %}
 	{% endif %}
 {% else %}
-	{% include /functions/define-message.html ignore=artefact.ignore msgno="e003" msg="Acronym fehlt!" %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="e003" msg=acronymMissing %}
 	{% assign errorList = errorList | push: out_msg %}
 {% endif %}
 
 {% comment %}---------- author -----------{% endcomment %}
+{% assign noAuthorMsg = site.translations[site.lang].genericErrors.noAuthor %}
+{% assign moreThanThreeAuthors = site.translations[site.lang].genericErrors.moreThanThreeAuthors %}
+{% assign authorDoesntExist = site.translations[site.lang].genericErrors.authorDoesntExist %}
+
 {% if withoutResponsibleCheck %}
 {% else %}
 	{% if artefact.author %}
 		{% if artefact.author.size == 0 %}
-			{% include /functions/define-message.html ignore=artefact.ignore msgno="e004"
-					msg="Kein(e) Autor(en) (Feld 'author') angegeben!" %}
+			{% include /functions/define-message.html ignore=artefact.ignore msgno="e004" msg=noAuthorMsg %}
 			{% assign errorList = errorList | push: out_msg %}
 		{% else %}
 			{% if artefact.author.size > 3 %}
 				{% include /functions/define-message.html ignore=artefact.ignore msgno="w005"
-						msg="Mehr als 3 Autoren (Feld 'author') - ist das so gewünscht?" %}
+						msg=moreThanThreeAuthors %}
 				{% assign warningList = warningList | push: out_msg %}
 			{% endif %}
 			{% for authorAcronym in artefact.author %}
-				{% if site.data.people[authorAcronym] %}
-				{% else %}
-					{% assign myMsg = "Autor*in '" | append: authorAcronym |
-													 append: "' in Feld 'author' exististiert nicht!" %}
+				{% assign foundAuthors = site.authors | where_exp: "author", "author.acronym == authorAcronym" %}
+				{% if foundAuthors.size == 0 %}
+					{% assign myMsg = authorDoesntExist | append: ": " | append: authorAcronym %}
 					{% include /functions/define-message.html ignore=artefact.ignore msgno="e006" msg=myMsg %}
 					{% assign errorList = errorList | push: out_msg %}
 				{% endif %}
 			{% endfor %}
 		{% endif %}
 	{% else %}
-		{% include /functions/define-message.html ignore=artefact.ignore msgno="e004"
-				msg="Kein(e) Autor(en) (Feld 'author') angegeben!" %}
+		{% include /functions/define-message.html ignore=artefact.ignore msgno="e004" msg=noAuthorMsg %}
 		{% assign errorList = errorList | push: out_msg %}
 	{% endif %}
 {% endif %}
