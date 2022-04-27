@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+{% assign sortField = site.data.metadata["useCase"].sortField %}
+{% assign collection = site.useCases | sort: sortField %}
+
+<h1>Use Cases ({{ collection.size }})</h1>
+
+<p>
+    Ein <b>Use Case</b> bündelt alle möglichen Szenarien, die eintreten können, wenn ein Akteur versucht,
+    mit Hilfe des betrachteten Systems ein bestimmtes fachliches Ziel zu erreichen. Er beschreibt,
+    was inhaltlich beim Versuch der Zielerreichung passieren kann und abstrahiert von konkreten technischen Lösungen.
+</p>
+
+<table>
+    <thead>
+    <tr>
+        <th width="5%"></th>
+        <th width="10%">ID</th>
+        <th width="40%">Titel</th>
+        <th width="30%">gehört zu funktionalem Requirement</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for useCase in collection %}
+    <tr>
+        {% include /functions/checks/check-useCase.html myArtefact=useCase %}
+        {% include /functions/get-check-icon.html errors=errorString warnings=warningString todos=useCase.todo %}
+        <td>{{ iconString }}</td>
+
+        {% include /functions/get-globalid.html myArtefact=useCase %}
+        <td><a href="{{ site.url }}{{ useCase.url | relative_url }}">{{ globalId }}</a></td>
+
+        {% include /functions/get-artefact-name.html myArtefact=useCase %}
+        <td><a href="{{ site.url }}{{ useCase.url | relative_url }}">{{ artefactName }}</a></td>
+
+        {% include /functions/get-link-to-artefact.html myRef=useCase.functionalRequirement
+                myTypeString="functionalRequirement" myIdFormat="prefix" %}
+        <td>{{ artefactLink }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,1 +1,3 @@
-# RE-Tool
+# Decision Log
+
+Decision Log for EVATool

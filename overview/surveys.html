@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{% assign sortField = site.data.metadata["survey"].sortField %}
+{% assign collection = site.surveys | sort: sortField %}
+
+<h1>(Online-)Umfragen ({{ collection.size }})</h1>
+
+<p>
+    Durch eine Umfrage lassen sich viele potentielle Nutzer mit geringen Aufwand erreichen. Zusätzlich
+    fühlen sich die Probanden/Befragten nicht einem Druck durch eine reale Person ausgesetzt,
+    so wie es bei einem Interview der Fall ist.
+</p>
+
+
+<table>
+    <thead>
+    <tr>
+
+        <th width="80%">Subject</th>
+        <th width="20%">Stakeholder Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for survey in collection %}
+        <tr>
+            {% include /functions/get-artefact-name.html myArtefact=survey %}
+            <td><a href="{{ site.url }}{{ survey.url | relative_url }}">{{ artefactName }}</a></td>
+            {% include /functions/get-link-to-artefact.html myRef=survey.stakeholderRole myTypeString="stakeholderRole"
+                    myIdFormat="prefix" %}
+            <td>{{ artefactLink }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  {% seo %}
+  <link rel="stylesheet" href="{{ site.url }}{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <!--<script src="{{ site.url }}{{ '/assets/js/respond.js' | relative_url }}"></script>-->
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!--[if lt IE 8]>
+  <link rel="stylesheet" href="{{ site.url }}{{ '/assets/css/ie.css' | relative_url }}">
+  <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  {% include /functions/print-js-teachermode.html %}
+</head>
+
+{% if site.teacherMode == true %}
+  {% if page != Nil %}
+    {% assign localKey = page.type | append: ";" | append: page.acronym %}
+      <body onload="colorSelection( '{{ localKey }}' )">
+  {% endif %}
+{% else %}
+  <body>
+{% endif %}
+
+
+<div class="navbar">
+
+  <a href="{{ site.url }}{{ '' | relative_url }}">Home</a>
+  <div class="subnav">
+    <button class="subnavbtn">Kontext<i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <span style="float:left; width: 20%"><p>&nbsp;</p></span>
+      <a href="{{ site.url }}{{ '/overview/stakeholders.html' | relative_url }}">Stakeholder</a>
+      <a href="{{ site.url }}{{ '/overview/stakeholderRoles.html' | relative_url }}">Stakeholder-Rollen</a>
+      <a href="{{ site.url }}{{ '/overview/goals.html' | relative_url }}">Ziele</a>
+      <a href="{{ site.url }}{{ '/overview/systemContextElements.html' | relative_url }}">Systemkontext</a>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <button class="subnavbtn">Informell<i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <span style="float:left; width: 34%"><p>&nbsp;</p></span>
+      <a href="{{ site.url }}{{ '/overview/scenarios.html' | relative_url }}">Szenarien</a>
+      <a href="{{ site.url }}{{ '/overview/personas.html' | relative_url }}">Personas</a>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <button class="subnavbtn">Formal<i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <span style="float:left; width: 32%"><p>&nbsp;</p></span>
+      <a href="{{ site.url }}{{ '/overview/functionalRequirements.html' | relative_url }}">Funktionale Anforderungen</a>
+      <a href="{{ site.url }}{{ '/overview/nonFunctionalRequirements.html' | relative_url }}">Nichtfunktionale Anforderungen</a>
+      <a href="{{ site.url }}{{ '/overview/priorization.html' | relative_url }}">Priorisierung</a>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <button class="subnavbtn">Detailliert<i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <span style="float:left; width: 40%"><p>&nbsp;</p></span>
+      <a href="{{ site.url }}{{ '/overview/useCaseDiagrams.html' | relative_url }}">Use-Case-Diagramme</a>
+      <a href="{{ site.url }}{{ '/overview/useCases.html' | relative_url }}">Use Cases</a>
+      <a href="{{ site.url }}{{ '/overview/userStories.html' | relative_url }}">Agiles Backlog</a>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <button class="subnavbtn">Qualitätssicherung<i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <span style="float:left; width: 50%"><p>&nbsp;</p></span>
+      <a href="{{ site.url }}{{ '/overview/reviews.html' | relative_url }}">Formale Reviews</a>
+      <a href="{{ site.url }}{{ '/overview/authors.html' | relative_url }}">Übersicht Autor*innen (mit Artefakten)</a>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <button class="subnavbtn">Quellen<i class="fa fa-caret-down"></i></button>
+      <div class="subnav-content">
+        <span style="float:left; width: 50%"><p>&nbsp;</p></span>
+        <a href="{{ site.url }}{{ '/overview/glossary.html' | relative_url }}">Glossar</a>
+        <a href="{{ site.url }}{{ '/overview/interviews.html' | relative_url }}">Interviews</a>
+        <a href="{{ site.url }}{{ '/overview/workshops.html' | relative_url }}">Workshops</a>
+        <a href="{{ site.url }}{{ '/overview/surveys.html' | relative_url }}">Umfragen</a>
+        <a href="{{ site.url }}{{ '/overview/literatureReferences.html' | relative_url }}">Literatur</a>
+      </div>
+  </div>
+</div>
+
+
+
+
+<div class="wrapper">
+  <section>
+    {{ content }}
+  </section>
+</div>
+
+
+<footer>
+<a href="{{ site.url }}{{ '/overview/documentation.html' | relative_url }}">Dokumentation</a> &nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.th-koeln.de/hochschule/impressum_8159.php">Impressum</a> &nbsp;&nbsp;&nbsp;
+<a href="https://www.th-koeln.de/hochschule/haftungshinweis_8277.php">Haftungshinweis</a> &nbsp;&nbsp;&nbsp;
+<a href="https://www.th-koeln.de/hochschule/datenschutzhinweis_8279.php">Datenschutzhinweis</a>
+</footer>
+
+
+{% if site.google_analytics %}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '{{ site.google_analytics }}', 'auto');
+  ga('send', 'pageview');
+</script>
+{% endif %}
+</body>
+</html>

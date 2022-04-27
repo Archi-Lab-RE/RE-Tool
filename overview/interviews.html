@@ -1,0 +1,36 @@
+---
+layout: default
+---
+{% assign sortField = site.data.metadata["interview"].sortField %}
+{% assign collection = site.interviews | sort: sortField %}
+
+<h1>Interviews ({{ collection.size }})</h1>
+
+<p>
+    Ein <b>Interview</b> eine Form der Befragung mit dem Ziel, persönliche Informationen, Sachverhalte oder Meinungen zu ermitteln.
+</p>
+
+
+<table>
+    <thead>
+    <tr>
+        <th width="5%"></th>
+        <th width="50%">Interview-Protokoll</th>
+        <th width="30%">Interviewpartner (Stakeholder)</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        {% for interview in collection %}
+        <tr>
+            <td>&nbsp;</td>
+            {% include /functions/get-artefact-name.html myArtefact=interview myIdFormat="prefix" %}
+            <td><a href="{{ site.url }}{{ interview.url | relative_url }}">{{ artefactName }}</a></td>
+
+            {% include /functions/get-link-to-artefact.html myRef=interview.stakeholder myTypeString="stakeholder"
+                    myIdFormat="prefix" %}
+            <td>{{ artefactLink }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

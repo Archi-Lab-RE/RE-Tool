@@ -1,0 +1,53 @@
+{% assign artefact = include.myArtefact %}
+
+{% assign errorString = "" %}
+{% assign warningString = "" %}
+
+{% comment %}---------- First the generic checks -----------{% endcomment %}
+
+{% include /functions/checks/generic/check-generic-aspects.html myArtefact=artefact
+		myErrorString="" myWarningString="" %}
+{% include /functions/checks/generic/check-sources.html myArtefact=artefact
+		myErrorString=errorString myWarningString=warningString %}
+{% if artefact.belongsTo %}
+    {% include /functions/checks/generic/check-generic-refs.html myArtefact=artefact
+            myCheckedRef=artefact.belongsTo myCheckedRefType="goal" asList=false emptyMeansError=true
+            myPurpose="'belongsTo'" myErrorString=errorString myWarningString=warningString %}
+{% endif %}
+
+{% assign errorList = errorString | split: ";" %}
+{% assign warningList = warningString | split: ";" %}
+
+
+{% comment %} ***** Error/Warning Numbers 790 - 809 reserved for Goal **** {% endcomment %}
+
+{% comment %}---------- title -----------{% endcomment %}
+{% if artefact.title %}
+	{% if artefact.title.size < 10 %}
+		{% assign myMsg = "Titel scheint zu kurz zu sein." %}
+		{% include /functions/define-message.html ignore=artefact.ignore msgno="w790" msg=myMsg %}
+		{% assign warningList = warningList | push: out_msg %}
+	{% endif %}
+{% else %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="e791" msg="Titel fehlt!" %}
+	{% assign errorList = errorList | push: out_msg %}
+{% endif %}
+
+{% comment %}---------- belongsTo/isTopLevel -----------{% endcomment %}
+{% if artefact.belongsTo %}
+    {% if artefact.isTopLevel == true %}
+        {% include /functions/define-message.html ignore=artefact.ignore msgno="e792"
+                msg="Entweder belongsTo: ist gesetzt oder isTopLevel:, beides geht nicht!" %}
+        {% assign errorList = errorList | push: out_msg %}
+    {% endif %}
+{% else %}
+    {% if artefact.isTopLevel == true %}
+    {% else %}
+        {% include /functions/define-message.html ignore=artefact.ignore msgno="e793"
+            msg="Mindestens eins der beiden Felder 'belongsTo:' oder 'isTopLevel:' müssen gesetzt sein!" %}
+        {% assign errorList = errorList | push: out_msg %}
+    {% endif %}
+{% endif %}
+
+{% assign errorString = errorList | join: ";" %}
+{% assign warningString = warningList | join: ";" %}

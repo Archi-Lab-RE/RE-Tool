@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+{% assign sortField = site.data.metadata["literatureReference"].sortField %}
+{% assign collection = site.literatureReferences | sort: sortField %}
+
+<h1>Literatur ({{ collection.size }})</h1>
+
+<p>
+    Ein <b>Literaturverweis</b> ist ein Verweis auf eine Quelle, die in der Literatur oder im Web zu finden ist.
+</p>
+
+
+<table>
+    <thead>
+    <tr>
+        <th width="10%">Akronym</th>
+        <th width="60%">Titel</th>
+        <th width="30%">Autor</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        {% for literatureReference in collection %}
+        <tr>
+            <td>{{ reference.acronym }}</td>
+            <td><a href="{{ site.url }}{{ reference.url | relative_url }}">{{ reference.title }}</a></td>
+            <td>{{ reference.author }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

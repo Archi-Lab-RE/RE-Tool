@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+{% include /functions/print-teacherbuttons.html myArtefact=page %}
+
+{% include /functions/print-page-navigation.html myArtefact=page %}
+
+{% include /functions/get-artefact-name.html myArtefact=page myIdFormat="postfixWithBrackets" %}
+<h1>Use Case {{ artefactName }}</h1>
+
+<dl>
+    {% include /functions/print-authors.html page=page %}
+
+    {% assign myAcronym = page.acronym %}
+    {% assign relatedUseCaseDiagrams = site.useCaseDiagrams |
+                where_exp: "ucd", "ucd.useCasesDetailedWithScenario contains myAcronym" %}
+    {% if relatedUseCaseDiagrams.size > 0 %}
+        <dt>Enthalten in Use-Case-Diagramm</dt>
+        {% for relatedUseCaseDiagram in relatedUseCaseDiagrams %}
+            {% include /functions/get-artefact-name.html myArtefact=relatedUseCaseDiagram myIdFormat="postfix" %}
+            <dd><a href="{{ site.url }}{{ relatedUseCaseDiagram.url | relative_url }}">{{ artefactName }}</a></dd>
+        {% endfor %}
+    {% endif %}
+
+    <dt>Zugrundeliegende funktionale Anforderung</dt>
+    {% include /functions/get-link-to-artefact.html myRef=page.functionalRequirement
+                myTypeString="functionalRequirement" myIdFormat="prefix" %}
+    <dd>{{ artefactLink }}</dd>
+
+    {% include /functions/print-history.html myArtefact=page %}
+
+    {% include /functions/checks/check-useCase.html myArtefact=page %}
+    {% include /functions/print-detailed-check-messages.html errors=errorString warnings=warningString todos=page.todo %}
+</dl>
+
+<h2>Use-Case-Header</h2>
+
+<dl>
+    <dt>Titel</dt>
+    <dd>{{ page.title }}</dd>
+
+    <dt>Beschreibung</dt>
+    <dd>{{ page.description }}</dd>
+
+    <dt>Primärer Aktor</dt>
+    {% include /functions/get-link-to-artefact.html myRef=page.primaryActor myTypeString="stakeholderRole"
+            myIdFormat="prefix" %}
+    <dd>{{ artefactLink }}</dd>
+
+    {% if page.secondaryActors.size > 0 %}
+        <dt>Sekundäre(r) Aktor(en)</dt>
+        {% for secondaryActorRef in page.secondaryActors %}
+            {% include /functions/get-link-to-artefact.html myRef=secondaryActorRef myTypeString="stakeholderRole"
+            myIdFormat="prefix" %}
+            <dd>{{ artefactLink }}</dd>
+        {% endfor %}
+    {% endif %}
+
+    <dt>Auslöser</dt>
+    <dd>{{ page.trigger }}</dd>
+
+    <dt>Vorbedingung</dt>
+    <dd>{{ page.precondition }}</dd>
+
+    <dt>Nachbedingung</dt>
+    <dd>{{ page.postcondition }}</dd>
+</dl>
+
+{{ page.content }}

@@ -1,0 +1,21 @@
+{% assign localRequirement = include.myRequirement %}
+
+{% assign kanoType = "-" %}
+{% assign kanoReasoning = "-" %}
+
+{% if localRequirement.kano %}
+	{% if localRequirement.kano.type %}
+		{% if localRequirement.kano.type == "excitement" %}
+			{% assign kanoType = "Begeisterung" %}
+		{% elsif localRequirement.kano.type == "basic" %}
+			{% assign kanoType = "Basis" %}
+		{% elsif localRequirement.kano.type == "performance" %}
+			{% assign kanoType = "Leistung" %}
+		{% else %}
+			{% assign kanoType = "???" %}
+		{% endif %}
+	{% endif %}
+	{% if localRequirement.kano.reasoning %}
+		{% assign kanoReasoning = localRequirement.kano.reasoning %}
+	{% endif %}
+{% endif %}

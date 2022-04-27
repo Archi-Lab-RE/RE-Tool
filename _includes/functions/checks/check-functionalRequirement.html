@@ -1,0 +1,67 @@
+{% assign artefact = include.myArtefact %}
+
+{% assign errorString = "" %}
+{% assign warningString = "" %}
+
+{% comment %}---------- First the generic checks -----------{% endcomment %}
+
+{% include /functions/checks/generic/check-generic-aspects.html myArtefact=artefact
+		myErrorString="" myWarningString="" %}
+{% include /functions/checks/generic/check-generic-refs.html myArtefact=artefact myCheckedRef=artefact.goals
+		myCheckedRefType="goal" asList=true emptyMeansError=true
+		myPurpose="Ziel-Referenz" myErrorString=errorString myWarningString=warningString %}
+{% include /functions/checks/generic/check-sources.html myArtefact=artefact
+		myErrorString=errorString myWarningString=warningString %}
+
+{% assign errorList = errorString | split: ";" %}
+{% assign warningList = warningString | split: ";" %}
+
+
+{% comment %} ***** Error Numbers 500 - 529 reserved for FR **** {% endcomment %}
+
+{% comment %}---------- implementationStatus -----------{% endcomment %}
+{% if artefact.implementationStatus %}
+	{% if artefact.implementationStatus != "open" and artefact.implementationStatus != "implemented"
+			and artefact.implementationStatus != "inProgress" %}
+		{% assign myMsg = "Undefinierten Implementierungs-Status '" | append: artefact.implementationStatus |
+				append: "' gefunden! Erlaubt sind 'open', 'inProgress' und 'implemented'." %}
+		{% include /functions/define-message.html ignore=artefact.ignore msgno="e500" msg=myMsg %}
+		{% assign errorList = errorList | push: out_msg %}
+	{% endif %}
+{% else %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="e501" msg="Implementierungs-Status fehlt!" %}
+	{% assign errorList = errorList | push: out_msg %}
+{% endif %}
+
+{% comment %}---------- kano -----------{% endcomment %}
+{% if artefact.kano %}
+	{% if artefact.kano.type %}
+		{% if artefact.kano.type != "basic" and artefact.kano.type != "performance" and artefact.kano.type != "excitement" %}
+			{% assign myMsg = "Undefinierten Kano-Faktor '" | append: artefact.kano.type |
+							append: "' gefunden! Erlaubt sind 'basic', 'performance' und 'excitement'." %}
+			{% include /functions/define-message.html ignore=artefact.ignore msgno="e502" msg=myMsg %}
+			{% assign errorList = errorList | push: out_msg %}
+		{% endif %}
+	{% else %}
+		{% include /functions/define-message.html ignore=artefact.ignore msgno="e503" msg="Typ des Kano-Faktors fehlt!" %}
+		{% assign errorList = errorList | push: out_msg %}
+	{% endif %}
+	{% if artefact.kano.reasoning %}
+		{% if artefact.kano.reasoning.size < 10 %}
+			{% assign myMsg = "Begründung für Kano-Faktor scheint zu kurz zu sein." %}
+			{% include /functions/define-message.html ignore=artefact.ignore msgno="w504" msg=myMsg %}
+			{% assign warningList = warningList | push: out_msg %}
+		{% endif %}
+	{% else %}
+		{% include /functions/define-message.html ignore=artefact.ignore msgno="e505" msg="Begründung des Kano-Faktors fehlt!" %}
+		{% assign errorList = errorList | push: out_msg %}
+	{% endif %}
+{% endif %}
+
+{% comment %}---------- prefilterPriorizationPoints -----------{% endcomment %}
+
+{% comment %}---------- title -----------{% endcomment %}
+
+
+{% assign errorString = errorList | join: ";" %}
+{% assign warningString = warningList | join: ";" %}

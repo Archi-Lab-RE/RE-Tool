@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+{% include /functions/print-teacherbuttons.html myArtefact=page %}
+
+{% include /functions/print-page-navigation.html myArtefact=page %}
+
+{% include /functions/get-artefact-name.html myArtefact=page myIdFormat="postfixWithBrackets" %}
+<h1>User Story {{ artefactName }}</h1>
+
+<dl>
+    {% include /functions/print-authors.html page=page %}
+
+    <dt>Zugrundeliegende funktionale Anforderung</dt>
+    {% include /functions/get-link-to-artefact.html myRef=page.functionalRequirement
+            myTypeString="functionalRequirement" myIdFormat="prefix" %}
+    <dd>{{ artefactLink }}</dd>
+
+    {% include /functions/print-history.html myArtefact=page %}
+
+    {% include /functions/checks/check-userStory.html myArtefact=page %}
+    {% include /functions/print-detailed-check-messages.html errors=errorString warnings=warningString todos=page.todo %}
+</dl>
+
+
+<H2>Text der User Story</H2>
+
+<dt>Als</dt>
+{% include /functions/get-link-to-artefact.html myRef=page.asA myTypeString="stakeholderRole" myIdFormat="none" %}
+<dd>{{ artefactLink }}</dd>
+
+<dt>möchte ich</dt>
+<dd>{{ page.iWantTo }}</dd>
+
+<dt>damit</dt>
+<dd>{{ page.forThisReason }}</dd>
+
+
+{{ page.content }}

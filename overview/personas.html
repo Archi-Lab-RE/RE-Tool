@@ -1,0 +1,46 @@
+---
+layout: default
+---
+{% assign sortField = site.data.metadata["persona"].sortField %}
+{% assign collection = site.personas | sort: sortField %}
+
+<h1>Personas ({{ collection.size }})</h1>
+
+<p>
+    Eine <b>Persona</b> stellt einen Prototyp für eine Gruppe von Stakeholdern dar, mit konkret ausgeprägten Eigenschaften und einem konkreten Nutzungsverhalten.
+</p>
+
+
+
+<table>
+    <thead>
+    <tr>
+        <th width="5%"></th>
+        <th width="10%">ID</th>
+        <th width="25%">Name</th>
+        <th width="25%">Stakeholder-Rolle</th>
+        <th width="15%">zugehörige Szenarien</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for persona in collection %}
+        <tr>
+            {% include /functions/checks/check-scenario.html myArtefact=persona %}
+            {% include /functions/get-check-icon.html errors=errorString warnings=warningString todos=persona.todo %}
+            <td>{{ iconString }}</td>
+
+            {% include /functions/get-globalid.html myArtefact=persona %}
+            <td><a href="{{ site.url }}{{ persona.url | relative_url }}">{{ globalId }}</a></td>
+
+            {% include /functions/get-artefact-name.html myArtefact=persona %}
+            <td><a href="{{ site.url }}{{ persona.url | relative_url }}">{{ artefactName }}</a></td>
+            {% include /functions/get-link-to-artefact.html myRef=persona.stakeholderRole myTypeString="stakeholderRole"
+                        myIdFormat="prefix" %}
+            <td>{{ artefactLink }}</td>
+
+            <td>tbd.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

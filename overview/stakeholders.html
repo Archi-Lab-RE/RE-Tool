@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+{% assign sortField = site.data.metadata["stakeholder"].sortField %}
+{% assign collection = site.stakeholders | sort: sortField %}
+
+<h1>Stakeholder ({{ collection.size }})</h1>
+
+<p>
+    Ein <b>Stakeholder</b> ist eine Person oder eine Organisation, die direkten Einfluss auf die Anforderungen
+    des betrachteten Systems hat, und / oder ein Interesse an dem zu entwickelnden System. Stakeholder sind stets
+    <i>konkrete</i> Personen oder Organisationen.
+</p>
+<p>
+    Sie werden in dieser Webpräsenz ausschließlich öffentlich verfügbaren Angaben dargestellt, oder mit
+    Informationen, in deren Veröffentlichung die Person oder Organisation eingewilligt hat (z.B. im Rahmen
+    einer Expertenbefragung). U.U. sind Namen und Kontaktdetails anonymisiert, aber der Redaktion dieser
+    Seite bekannt.
+</p>
+
+
+<table>
+    <thead>
+    <tr>
+        <th width="5%"></th>
+        <th width="10%">ID</th>
+        <th width="15%">Name</th>
+        <th width="25%">Stakeholder-Rolle</th>
+        <th width="40%">Beziehung zum Projekt</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        {% for stakeholder in collection %}
+        <tr>
+            {% include /functions/checks/check-stakeholder.html myArtefact=stakeholder %}
+            {% include /functions/get-check-icon.html errors=errorString warnings=warningString todos=stakeholder.todo %}
+            <td>{{ iconString }}</td>
+
+            {% include /functions/get-globalid.html myArtefact=stakeholder %}
+            <td><a href="{{ site.url }}{{ stakeholder.url | relative_url }}">{{ globalId }}</a></td>
+
+            {% include /functions/get-artefact-name.html myArtefact=stakeholder %}
+            <td><a href="{{ site.url }}{{ stakeholder.url | relative_url }}">{{ artefactName }}</a></td>
+            <td>
+                {% assign linkList = "" | split: ";" %}
+                {% for shr in stakeholder.stakeholderRole %}
+                    {% include /functions/get-link-to-artefact.html myRef=shr myTypeString="stakeholderRole"
+                            myIdFormat="none" %}
+                    {% assign linkList = linkList | push: artefactLink %}
+                {% endfor %}
+                {% assign linkString = linkList | join: ",<br/>" %}
+                {{ linkString }}
+            </td>
+            <td>{{ stakeholder.relationshipToProject }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

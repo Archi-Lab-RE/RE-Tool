@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+{% include /functions/print-teacherbuttons.html myArtefact=page %}
+
+{% include /functions/print-page-navigation.html myArtefact=page %}
+
+{% include /functions/get-artefact-name.html myArtefact=page myIdFormat="postfixWithBrackets" %}
+<h1>Stakeholder {{ artefactName }}</h1>
+
+{% if page.anonymous %}
+    <p>
+        Auf Wunsch des Stakeholders wird der Klarname hier nicht genannt.
+    </p>
+{% endif %}
+
+<dl>
+    {% include /functions/print-authors.html page=page %}
+
+    <dt>Stakeholder-Rolle, zu der dieser Stakeholder gehört</dt>
+    {% for shr in page.stakeholderRole %}
+        {% include /functions/get-link-to-artefact.html myRef=shr myTypeString="stakeholderRole" myIdFormat="prefix" %}
+        <dd>{{ artefactLink }}</dd>
+    {% endfor %}
+
+
+    <dt>Beziehung zum Projekt</dt>
+    <dd> {{ page.relationshipToProject }} </dd>
+
+    {% assign interviews = site.interviews | where: "stakeholder", page.acronym %}
+    {% if interviews.size > 0 %}
+        <dt>Interview</dt>
+        {% for interview in interviews %}
+            {% include /functions/get-artefact-name.html myArtefact=interview myIdFormat="prefix" %}
+            <dd><a href="{{ site.url }}{{ interview.url | relative_url }}">{{ artefactName }}</a></dd>
+        {% endfor %}
+    {% endif %}
+
+    {% include /functions/print-history.html myArtefact=page %}
+
+    {% include /functions/checks/check-stakeholder.html myArtefact=page %}
+    {% include /functions/print-detailed-check-messages.html errors=errorString warnings=warningString todos=page.todo %}
+</dl>
+
+
+{{ page.content }}

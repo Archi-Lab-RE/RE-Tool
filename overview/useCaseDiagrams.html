@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+{% assign sortField = site.data.metadata["useCaseDiagram"].sortField %}
+{% assign collection = site.useCaseDiagrams | sort: sortField %}
+
+<h1>Use-Case-Diagramme ({{ collection.size }})</h1>
+
+<p>
+    Ein <b>Use-Case-Diagramm</b> nutzt UML-Notation, um alle Use Cases zu einem bestimmten Aspekt, beispielsweise
+    einer funktionalen Anforderungen, intuitiv verständlich in einer graphischen Übersicht darzustellen.
+</p>
+
+
+<table>
+    <thead>
+    <tr>
+        <th width="5%"></th>
+        <th width="10%">ID</th>
+        <th width="40%">Titel</th>
+        <th width="30%">gehört zu funktionalem Requirement</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for useCaseDiagram in collection %}
+    <tr>
+        {% include /functions/checks/check-useCaseDiagram.html myArtefact=useCaseDiagram %}
+        {% include /functions/get-check-icon.html errors=errorString warnings=warningString todos=useCaseDiagram.todo %}
+        <td>{{ iconString }}</td>
+
+        {% include /functions/get-globalid.html myArtefact=useCaseDiagram %}
+        <td><a href="{{ site.url }}{{ useCaseDiagram.url | relative_url }}">{{ globalId }}</a></td>
+
+        {% include /functions/get-artefact-name.html myArtefact=useCaseDiagram %}
+        <td><a href="{{ site.url }}{{ useCaseDiagram.url | relative_url }}">{{ artefactName }}</a></td>
+
+        {% include /functions/get-link-to-artefact.html myRef=useCaseDiagram.functionalRequirement
+                myTypeString="functionalRequirement" myIdFormat="prefix" %}
+        <td>{{ artefactLink }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

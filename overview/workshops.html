@@ -1,0 +1,34 @@
+---
+layout: default
+---
+{% assign sortField = site.data.metadata["workshop"].sortField %}
+{% assign collection = site.workshops | sort: sortField %}
+
+<h1>Workshops ({{ collection.size }})</h1>
+
+<p>
+    Workshops sind methodisch vorbereitete, auf bestimmte Stakeholder-Rollen fokussierte Veranstaltung zur Informations- und
+    Anforderungsgewinnung.
+</p>
+
+
+<table>
+    <thead>
+    <tr>
+        <th width="10%">Akronym</th>
+        <th width="70%">Ziele</th>
+        <th width="20%">Datum</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for workshop in collection %}
+        <tr>
+            <td>{{ workshop.acronym }}</td>
+            {% include /functions/get-artefact-name.html myArtefact=workshop %}
+            <td><a href="{{ site.url }}{{ workshop.url | relative_url }}">{{ artefactName }}</a></td>
+            <td>{{ workshop.date | date: '%B %d, %Y'}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
