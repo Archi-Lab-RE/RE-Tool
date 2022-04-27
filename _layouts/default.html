@@ -92,6 +92,17 @@
         <a href="{{ site.url }}{{ '/overview/literatureReferences.html' | relative_url }}">Literatur</a>
       </div>
   </div>
+
+{% if site.teacherMode == true %}
+  <div class="subnav">
+    <button class="subnavbtn">Teacher Mode<i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <span style="float:left; width: 65%"><p>&nbsp;</p></span>
+      <a href="{{ site.url }}{{ '/overview/artefacts.csv' | relative_url }}">Export everything as SCV</a>
+    </div>
+  </div>
+{% endif %}
+
 </div>
 
 
