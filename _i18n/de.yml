@@ -1,0 +1,7 @@
+#-------------------
+global:
+#-------------------
+teacherMode:
+  exportCSVNavLabel: Alles als CSV exportieren
+#-------------------
+interviews:
