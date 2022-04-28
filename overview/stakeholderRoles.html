@@ -4,14 +4,9 @@ layout: default
 {% assign sortField = site.data.metadata["stakeholderRole"].sortField %}
 {% assign collection = site.stakeholderRoles | sort: sortField %}
 
-<h1>Stakeholder-Rollen ({{ collection.size }})</h1>
+<h1>{% t stakeholderRoles.headerOverview %} ({{ collection.size }})</h1>
 
-<p>
-    <b>Stakeholder-Rollen</b> sind verallgemeinerte, "typische" Rollen von Stakeholdern, die dann etwa in
-    Use Cases Verwendung finden können. Ein Beispiel: "Prof. Dr. Erika Musterfrau, Professorin für angewandte
-    Mathematik" wäre ein Stakeholder, während "Professor*in" die Stakeholder-Rolle ist.
-</p>
-
+{% t stakeholderRoles.summary %}
 
 <table>
     <thead>
@@ -19,7 +14,7 @@ layout: default
         <th width="5%"></th>
         <th width="10%">ID</th>
         <th width="30%">Name</th>
-        <th width="60%">Beschreibung</th>
+        <th width="60%">{% t global.descriptionCapital %}</th>
     </tr>
     </thead>
     <tbody>

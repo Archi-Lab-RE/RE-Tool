@@ -9,8 +9,7 @@ name: Professor1 (anonymous)
 anonymous: true
 stakeholderRole: 
     - profInf
-    - potAnwender
-    - lehrende
+    - lecturer
 relationshipToProject: >
     Potential user of the system, as a lecturer.
 history:

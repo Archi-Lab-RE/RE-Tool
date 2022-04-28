@@ -3,6 +3,7 @@ global:
   for: für
   seeAlsoCapital: Siehe auch
   andAlso: sowie
+  descriptionCapital: Beschreibung
   navbar:
     context: Kontext
     informal: Informell
@@ -69,6 +70,14 @@ stakeholders:
 #-------------------
 stakeholderRoles:
   navLabel: Stakeholder-Rollen
+  summary: >
+    <p><b>Stakeholder-Rollen</b> sind verallgemeinerte, "typische" Rollen von Stakeholdern, die dann etwa in
+    Use Cases Verwendung finden können. Ein Beispiel: "Prof. Dr. Erika Kaminsky, Professorin für angewandte
+    Mathematik" wäre ein Stakeholder, während "Professor*in" die Stakeholder-Rolle ist.</p>
+  headerOverview: Stakeholder-Rollen
+  header: Stakeholder-Rolle
+  datasource: Sources for this stakeholder role
+  withRole: Stakeholder mit dieser Rolle
 #-------------------
 goals:
   navLabel: Ziele

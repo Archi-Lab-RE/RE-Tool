@@ -3,6 +3,7 @@ global:
   for: for
   seeAlsoCapital: See also
   andAlso: and also
+  descriptionCapital: Description
   navbar:
     context: Context
     informal: Informal
@@ -68,6 +69,14 @@ stakeholders:
 #-------------------
 stakeholderRoles:
   navLabel: Stakeholder Roles
+  summary: >
+    <p><b>Stakeholder roles</b> are generalized, "typical" roles of stakeholders, which can then be used, for example, in
+    can be used in use cases. For example: "Prof. Dr. Erika Kaminsky, Professor of Applied Mathematics" would be a
+    stakeholder, while "Professor" could be the stakeholder role.</p>
+  headerOverview: Stakeholder Roles
+  header: Stakeholder Role
+  datasource: Datenerhebungen für diese Stakeholder-Rolle
+  withRole: Stakeholder with this role
 #-------------------
 goals:
   navLabel: Goals

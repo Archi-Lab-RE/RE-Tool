@@ -7,8 +7,7 @@ author:
     - sbe
 name: Fabian Krampe
 stakeholderRole: 
-    - wmaProg
-    - lehrende
+    - lecturer
 relationshipToProject: >
     User of the system in several modules. Interested in meaningful further development. 
     Would like to contribute own ideas. 

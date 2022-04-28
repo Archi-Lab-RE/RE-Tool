@@ -7,19 +7,19 @@ layout: default
 {% include /functions/print-page-navigation.html myArtefact=page %}
 
 {% include /functions/get-artefact-name.html myArtefact=page myIdFormat="postfixWithBrackets" %}
-<h1>Stakeholder-Rolle {{ artefactName }}</h1>
+<h1>{% t stakeholderRoles.header %} {{ artefactName }}</h1>
 
 <dl>
     {% include /functions/print-authors.html page=page %}
 
-    <dt>Beschreibung</dt>
+    <dt>{% t global.descriptionCapital %}</dt>
     <dd>{{ page.description }}</dd>
 
     {% include /functions/find-artefacts-referencing-stakeholder-role.html
             myStakeholderRole=page myType="stakeholder" myCollection=site.stakeholders %}
     {% assign stakeholderLinkList = linksString | split: ";" %}
     {% if stakeholderLinkList.size > 0 %}
-        <dt>Stakeholder mit dieser Rolle</dt>
+        <dt>{% t stakeholderRoles.withRole %}</dt>
         {% for link in stakeholderLinkList %}
             <dd>{{ link }}</dd>
         {% endfor %}
@@ -43,7 +43,7 @@ layout: default
     {% assign workshopLinkList = linksString | split: ";" %}
 
     {% if interviewList.size > 0 or surveyLinkList.size > 0 or workshopLinkList.size > 0 %}
-        <dt>Datenerhebungen für diese Stakeholder-Rolle</dt>
+        <dt>{% t stakeholderRoles.datasource %}</dt>
         {% for interview in interviewList %}
             {% include /functions/get-artefact-name.html myArtefact=interview myIdFormat="prefix" %}
             <dd><a href="{{ site.url }}{{ interview.url | relative_url }}">{{ artefactName }}</a></dd>

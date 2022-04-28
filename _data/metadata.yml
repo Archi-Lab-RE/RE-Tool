@@ -1,5 +1,6 @@
 functionalRequirement:
     fullName: "Funktionale Anforderung"
+    fullNameEn: "Functional Requirement"
     sortField: "title"
     prefix: "FR"
     collection: "functionalRequirements"
@@ -13,6 +14,7 @@ functionalRequirement:
         p30: Content & form perfect
 goal:
     fullName: "Ziel"
+    fullNameEn: "Goal"
     sortField: "title"
     prefix: "GO"
     collection: "goals"
@@ -44,6 +46,7 @@ literatureReference:
     collection: "literatureReferences"
 nonFunctionalRequirement:
     fullName: "Nicht-funktionale Anforderung"
+    fullNameEn: "Nonfunctional Requirement"
     sortField: "title"
     prefix: "NFR"
     collection: "nonFunctionalRequirements"
@@ -64,6 +67,7 @@ persona:
         p30: Content & form perfect
 review:
     fullName: "Formales Review"
+    fullNameEn: "Formal Review"
     sortField: "referencedType"
     prefix: "RV"
     collection: "reviews"
@@ -77,6 +81,7 @@ review:
         p30: Comprehensive, detailed, to the point
 scenario:
     fullName: "Szenario"
+    fullNameEn: "Scenario"
     sortField: "title"
     prefix: "SCN"
     collection: "scenarios"
@@ -107,6 +112,7 @@ stakeholder:
         p30: Well researched, stakes described in detail
 stakeholderRole:
     fullName: "Stakeholder-Rolle"
+    fullNameEn: "Stakeholder Role"
     sortField: "name"
     prefix: "STR"
     collection: "stakeholderRoles"
@@ -120,13 +126,15 @@ stakeholderRole:
         p30: Well researched, stakes described in detail
 survey:
     fullName: "Umfrage"
+    fullNameEn: "Survey"
     sortField: "subject"
     prefix: "SV"
     collection: "surveys"
     stakeholderRoleRef:
         asString: "stakeholderRole"
 systemContextElement:
-    fullName: "Systemkontex-Element"
+    fullName: "Systemkontext-Element"
+    fullNameEn: "System Context Element"
     sortField: "title"
     prefix: "SYC"
     collection: "systemContextElements"
@@ -156,6 +164,7 @@ useCase:
         p30: Comprehensive, well defined, formally fine
 useCaseDiagram:
     fullName: "Use-Case-Diagramm"
+    fullNameEn: "Use Case Diagram"
     sortField: "title"
     prefix: "UCD"
     collection: "useCaseDiagrams"
