@@ -42,6 +42,8 @@ github_username:  jekyll
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-multiple-languages-plugin
+  - jekyll-hyperlinkify-glossary
 
 # jekyll-multiple-languages-plugin settings:
 languages: ["en","de"]
