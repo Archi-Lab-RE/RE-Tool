@@ -3,6 +3,13 @@ global:
   for: for
   seeAlsoCapital: See also
   andAlso: and also
+  navbar:
+    context: Context
+    informal: Informal
+    formal: Formal
+    detailed: Detailed
+    qs: Quality Assurance
+    sources: Sources
 #-------------------
 teacherMode:
   exportCSVNavLabel: Export everything as CSV
@@ -19,8 +26,10 @@ genericErrors:
 #-------------------
 authors:
   dtLabel: Author(s)
+  navLabel: Overview Authors (with Artefacts)
 #-------------------
 interviews:
+  navLabel: Interviews
   transcriptUrlErrMsg: transcriptUrl missing!
   questionnaireUrlErrMsg: questionnaireUrl missing!
   stakeholderPurpose: corresponding stakeholder
@@ -37,3 +46,54 @@ interviews:
   forTheInterviewExists: For the interview, there is
   transscript: a transscript
   questionnaire: a questionnaire
+#-------------------
+stakeholders:
+  navLabel: Stakeholders
+#-------------------
+stakeholderRoles:
+  navLabel: Stakeholder Roles
+#-------------------
+goals:
+  navLabel: Goals
+#-------------------
+systemContext:
+  navLabel: System Context
+#-------------------
+scenarios:
+  navLabel: Scenarios
+#-------------------
+personas:
+  navLabel: Personas
+#-------------------
+functionalRequirements:
+  navLabel: Functional Requirements
+#-------------------
+nonFunctionalRequirements:
+  navLabel: Non-functional Requirements
+#-------------------
+priorization:
+  navLabel: Priorization
+#-------------------
+useCaseDiagrams:
+  navLabel: Use Case Diagrams
+#-------------------
+useCases:
+  navLabel: Use Cases
+#-------------------
+userStories:
+  navLabel: Agile Backlog
+#-------------------
+formalReviews:
+  navLabel: Formal Reviews
+#-------------------
+glossary:
+  navLabel: Glossary
+#-------------------
+workshops:
+  navLabel: Workshops
+#-------------------
+surveys:
+  navLabel: Surveys
+#-------------------
+documentsAndLiterature:
+  navLabel: Documents and Literature
