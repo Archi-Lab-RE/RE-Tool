@@ -46,9 +46,25 @@ interviews:
   forTheInterviewExists: For the interview, there is
   transscript: a transscript
   questionnaire: a questionnaire
+  summary: >
+    An <b>interview</b> is a form of information retrieval with the aim of obtaining information about a business domain,
+    background, technical contexts and/or personal opinions.
+  transscriptTableHeader: Interview Transscript
+  partnerTableHeader: Interview Partner (Stakeholder)
 #-------------------
 stakeholders:
   navLabel: Stakeholders
+  anonymous: At the request of the stakeholder, the real name is not mentioned here. Instead, we will use a pseudonym.
+  summary: >
+    <p>A <b>stakeholder</b> is a person or organization that directly influences the requirements
+    of the system under consideration, and/or takes an interest in the system to be developed. Stakeholders are always
+    <i>specific</i> people or organizations.</p>
+    <p>Stakeholders are presented to this web tool exclusively with publicly available information, or with
+    information that the person or organization has consented to being published (e.g. as part of
+    an expert interview). Occasionally, names and contact details are anonymized, and a pseudonym is used instead.</p>
+  stakeholderRoleTabHeader: Stakeholder Role
+  relationship: Relationship to Project
+  stakeholderRole: Stakeholder role, to which this stakeholder belongs
 #-------------------
 stakeholderRoles:
   navLabel: Stakeholder Roles

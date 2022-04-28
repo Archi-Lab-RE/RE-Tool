@@ -44,11 +44,28 @@ interviews:
   with: Interview mit
   results: Resultate
   forTheInterviewExists: Zu dem Interview gibt es
-  transscript: ein Transskript
+  transscript: ein Interview-Protokoll
   questionnaire: einen Frageleitfaden
+  summary: >
+    <p>Ein <b>Interview</b> ist eine Form der Befragung mit dem Ziel, Informationen über eine fachliche Domäne,
+    Hintergründe, technische Zusammenhänge und/oder persönliche Meinungen zu ermitteln.</p>
+  transscriptTableHeader: Interview-Protokoll
+  partnerTableHeader: Interviewpartner (Stakeholder)
 #-------------------
 stakeholders:
   navLabel: Stakeholder
+  anonymous: Auf Wunsch des Stakeholders wird der Klarname hier nicht genannt. Stattdessen wird ein Pseudonym verwendet.
+  summary: >
+    <p>Ein <b>Stakeholder</b> ist eine Person oder eine Organisation, die direkten Einfluss auf die Anforderungen
+    des betrachteten Systems hat, und / oder ein Interesse an dem zu entwickelnden System. Stakeholder sind stets
+    <i>konkrete</i> Personen oder Organisationen.</p>
+    <p>Stakeholder werden diesem Webtool ausschließlich mit öffentlich verfügbaren Angaben dargestellt, oder mit
+    Informationen, in deren Veröffentlichung die Person oder Organisation eingewilligt hat (z.B. im Rahmen
+    einer Expertenbefragung). Unter Umständen sind Namen und Kontaktdetails anonymisiert. In diesem Fall wird der
+    Stakeholder durch ein Pseudonym bezeichnet.</p>
+  stakeholderRoleTabHeader: Stakeholder-Rolle
+  relationship: Beziehung zum Projekt
+  stakeholderRole: Stakeholder-Rolle, zu der dieser Stakeholder gehört
 #-------------------
 stakeholderRoles:
   navLabel: Stakeholder-Rollen

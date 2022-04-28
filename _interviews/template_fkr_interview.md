@@ -1,22 +1,21 @@
 ---
-acronym: donotdelete_nnprof1_interview_template
+acronym: template_fkr_interview
 type: interview
 isTemplate: true
 author: 
     - sbe
-stakeholder: nnProf1
-date: 2021-05-10
-duration: "28:16"
-location: f2f
-questionnaireUrl: /sources/Questionnaire_nnProf1.pdf
-transcriptUrl: /sources/nnProf1_transkript.pdf
+stakeholder: fkr
+date: 2021-05-12
+duration: "01:07:24"
+location: videoconf
+transcriptUrl: /sources/fkrampe_transkript.pdf
 history:
     v1:
-        date: 2021-06-16
+        date: 2021-05-25
         comment: initially created
     v2:
-        date: 2021-06-17
-        comment: update author
+        date: 2021-06-04
+        comment: changed according to template
 todo:
     - replace by an English version when available  
 ---

@@ -11,21 +11,21 @@ layout: default
 
 {% if page.anonymous %}
     <p>
-        Auf Wunsch des Stakeholders wird der Klarname hier nicht genannt.
+        {% t stakeholders.anonymous %}
     </p>
 {% endif %}
 
 <dl>
     {% include /functions/print-authors.html page=page %}
 
-    <dt>Stakeholder-Rolle, zu der dieser Stakeholder gehört</dt>
+    <dt>{% t stakeholders.stakeholderRole %}</dt>
     {% for shr in page.stakeholderRole %}
         {% include /functions/get-link-to-artefact.html myRef=shr myTypeString="stakeholderRole" myIdFormat="prefix" %}
         <dd>{{ artefactLink }}</dd>
     {% endfor %}
 
 
-    <dt>Beziehung zum Projekt</dt>
+    <dt>{% t stakeholders.relationship %}</dt>
     <dd> {{ page.relationshipToProject }} </dd>
 
     {% assign interviews = site.interviews | where: "stakeholder", page.acronym %}
