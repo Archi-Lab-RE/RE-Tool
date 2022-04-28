@@ -1,5 +1,5 @@
 ---
-acronym: template_nnprof1_interview
+acronym: nnprof1_interview
 type: interview
 isTemplate: true
 author: 

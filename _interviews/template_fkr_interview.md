@@ -1,5 +1,5 @@
 ---
-acronym: template_fkr_interview
+acronym: fkr_interview
 type: interview
 isTemplate: true
 author: 

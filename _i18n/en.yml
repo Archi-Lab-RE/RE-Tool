@@ -4,6 +4,7 @@ global:
   seeAlsoCapital: See also
   andAlso: and also
   descriptionCapital: Description
+  sources: Sources
   navbar:
     context: Context
     informal: Informal
@@ -75,11 +76,31 @@ stakeholderRoles:
     stakeholder, while "Professor" could be the stakeholder role.</p>
   headerOverview: Stakeholder Roles
   header: Stakeholder Role
-  datasource: Datenerhebungen für diese Stakeholder-Rolle
+  datasource: Sources for this stakeholder role
   withRole: Stakeholder with this role
 #-------------------
 goals:
   navLabel: Goals
+  summary: >
+    <p>A <b>goal</b> is the intentional description of a characteristic feature
+    of the system to be developed or of the associated development process. They help achieving a
+    common understanding of the system. Goals are solution-agnostic, i.e., they describe <i>what</i> the system
+    wants to achieve, but not <i>how</i>.</p>
+  headerOverview: Goals
+  header: Goal
+  subAndMainGoals: All Main- and Sub-Goals
+  subAndMainGoalsExplanation: >
+    <p>For some goals, there are sub-goals. Main goals are printed in bold face, sub-goals indented below.</p>
+  showSubAndMainGoals: Show also sub-goals
+  onlyMainGoals: Only Main Goals
+  onlyMainGoalsExplanation: >
+    <p>For some goals, there are sub-goals. These sub-goals are now hidden for the sake of clarity.</p>
+  showOnlyMainGoals: Show only main goals
+  errGoalTextMissing: Field 'goalText' must not be missing or empty!
+  mainGoalHeader: Main Goal
+  subGoalHeader: Sub-Goal
+  subGoals: Sub-Goals
+  partOf: Part of the main goal ...
 #-------------------
 systemContext:
   navLabel: System Context

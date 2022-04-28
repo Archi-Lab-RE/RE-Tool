@@ -4,14 +4,9 @@ layout: default
 {% assign sortField = site.data.metadata["goal"].sortField %}
 {% assign collection = site.goals | sort: sortField %}
 
-<h1>Ziele ({{ collection.size }})</h1>
+<h1>{% t goals.headerOverview %} ({{ collection.size }})</h1>
 
-<p>
-    Ein <b>Ziel</b> ist die intentionale Beschreibung eines charakteristischen Merkmals
-    des zu entwickelnden Systems bzw. des zugehörigen Entwicklungsprozesses. Sie dienen dem Schaffen eines gemeinsamen Systemverständnisses.
-</p>
-
-
+{% t goals.summary %}
 
 <table>
     <thead>
@@ -22,8 +17,6 @@ layout: default
     </tr>
     </thead>
     <tbody>
-
-
         {% comment %} --- sort the artefacts in a tree-like fashion, with the top-level stakeholders above their specialization --- {% endcomment %}
         {% assign topLevelItems = collection | where_exp: "item", "item.isTopLevel == true" %}
         {% assign treeSortedCollection = "" | split: ";" %}
@@ -43,16 +36,14 @@ layout: default
         {% endfor %}
         {% assign treeSortedCollection = treeSortedCollection | concat: leftOvers %}
 
-        <h2>Alle Haupt- und Unterziele</h2>
+        <h2>{% t goals.subAndMainGoals %}</h2>
 
-        <p>
-            Für einige Ziele sind auch Unterziele definiert. Hauptziele sind fett, Unterziele eingerückt darunter
-            dargestellt.
-        </p>
+        {% t goals.subAndMainGoalsExplanation %}
+
         <p>
             <a href="{{ site.url }}{{ '/overview/goals-only-main.html' | relative_url }}">
                 <img src="{{ site.url }}{{ '/assets/zoom-in-3-24-blue.png' | relative_url }}" style="min-height: 24px; min-width: 24px;"/>
-                &nbsp;&nbsp;Nur Hauptziele anzeigen
+                &nbsp;&nbsp;{% t goals.showOnlyMainGoals %}
             </a>
         </p>
 

@@ -7,10 +7,12 @@ layout: default
 
 {% include /functions/get-artefact-name.html myArtefact=page myIdFormat="postfixWithBrackets" %}
 {% if page.isTopLevel %}
-    <h1>Hauptziel {{ artefactName }}</h1>
+    <h1>{% t goals.mainGoalHeader %} {{ artefactName }}</h1>
 {% else %}
-    <h1>Unterziel {{ artefactName }}</h1>
+    <h1>{% t goals.subGoalHeader %} {{ artefactName }}</h1>
 {% endif %}
+
+<p>{{ page.goalText }}</p>
 
 <dl>
     {% include /functions/print-authors.html page=page %}
@@ -19,20 +21,20 @@ layout: default
         {% assign thisAcronym = page.acronym %}
         {% assign foundSubGoals = site.goals | where_exp: "goal", "goal.belongsTo == thisAcronym" %}
         {% if foundSubGoals.size > 0 %}
-            <dt>Unterziele</dt>
+            <dt>{% t goals.subGoals %}</dt>
             {% for foundSubGoal in foundSubGoals %}
                 {% include /functions/get-artefact-name.html myArtefact=foundSubGoal myIdFormat="postfix" %}
                 <dd><a href="{{ site.url }}{{ foundSubGoal.url | relative_url }}">{{ artefactName }}</a></dd>
             {% endfor %}
         {% endif %}
     {% else %}
-        <dt>Teil des übergreifenden Ziels ...</dt>
+        <dt>{% t goals.partOf %}</dt>
         {% include /functions/get-link-to-artefact.html myRef=page.belongsTo myTypeString="goal"
                 myIdFormat="postfix" %}
         <dd>{{ artefactLink }}</dd>
     {% endif %}
 
-    <dt>Quellen</dt>
+    <dt>{% t global.sources %}</dt>
     {% for source in page.source %}
         <dd>{{ source }}</dd>
     {% endfor %}

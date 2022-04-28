@@ -49,5 +49,12 @@
     {% endif %}
 {% endif %}
 
+{% comment %}---------- goalText -----------{% endcomment %}
+{% if artefact.goalText == Nil %}
+	{% assign myMsg = site.translations[site.lang].goals.errGoalTextMissing %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="e794" msg=myMsg %}
+    {% assign errorList = errorList | push: out_msg %}
+{% endif %}
+
 {% assign errorString = errorList | join: ";" %}
 {% assign warningString = warningList | join: ";" %}

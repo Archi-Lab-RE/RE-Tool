@@ -4,6 +4,7 @@ global:
   seeAlsoCapital: Siehe auch
   andAlso: sowie
   descriptionCapital: Beschreibung
+  sources: Quellen
   navbar:
     context: Kontext
     informal: Informell
@@ -76,11 +77,32 @@ stakeholderRoles:
     Mathematik" wäre ein Stakeholder, während "Professor*in" die Stakeholder-Rolle ist.</p>
   headerOverview: Stakeholder-Rollen
   header: Stakeholder-Rolle
-  datasource: Sources for this stakeholder role
+  datasource: Datenerhebungen für diese Stakeholder-Rolle
   withRole: Stakeholder mit dieser Rolle
 #-------------------
 goals:
   navLabel: Ziele
+  summary: >
+    <p>Ein <b>Ziel</b> ist die intentionale Beschreibung eines charakteristischen Merkmals
+    des zu entwickelnden Systems bzw. des zugehörigen Entwicklungsprozesses. Sie dienen dem Schaffen eines
+    gemeinsamen Systemverständnisses. Ziele sind lösungs-agnostisch, d.h. sie beschreiben, <i>was</i> das
+    System erreichen will, aber nicht <i>wie</i>.</p>
+  headerOverview: Goals
+  header: Goal
+  subAndMainGoals: Alle Haupt- und Unterziele
+  subAndMainGoalsExplanation: >
+    <p>Für einige Ziele sind auch Unterziele definiert. Hauptziele sind fett, Unterziele eingerückt darunter
+    dargestellt.</p>
+  showSubAndMainGoals: Unterziele einblenden
+  onlyMainGoals: Nur Hauptziele
+  onlyMainGoalsExplanation: >
+    <p>Für einige Ziele sind auch Unterziele definiert. Diese sind jetzt der Übersichtlichkeit halber ausgeblendet.</p>
+  showOnlyMainGoals: Nur Hauptziele anzeigen
+  errGoalTextMissing: Feld 'goalText' darf nicht fehlen oder leer sein!
+  mainGoalHeader: Hauptziel
+  subGoalHeader: Unterziel
+  subGoals: Unterziele
+  partOf: Teil des übergreifenden Ziels ...
 #-------------------
 systemContext:
   navLabel: Systemkontext
