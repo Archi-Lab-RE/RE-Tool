@@ -32,5 +32,30 @@
 	{% assign warningList = warningList | push: out_msg %}
 {% endif %}
 
+{% comment %}---------- date -----------{% endcomment %}
+{% if artefact.date == Nil %}
+	{% assign myMsg = site.translations[site.lang].interviews.dateMissing %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="e712" msg=myMsg %}
+	{% assign errorList = errorList | push: out_msg %}
+{% endif %}
+
+
+{% comment %}---------- duration -----------{% endcomment %}
+{% if artefact.date == Nil %}
+	{% assign myMsg = site.translations[site.lang].interviews.durationMissing %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="w713" msg=myMsg %}
+	{% assign warningList = warningList | push: out_msg %}
+{% endif %}
+
+
+{% comment %}---------- location -----------{% endcomment %}
+{% if artefact.location == "videoconf" or artefact.location == "f2f" %}
+{% else %}
+	{% assign myMsg = site.translations[site.lang].interviews.locationErrMsg %}
+	{% include /functions/define-message.html ignore=artefact.ignore msgno="e714" msg=myMsg %}
+	{% assign errorList = errorList | push: out_msg %}
+{% endif %}
+
+
 {% assign errorString = errorList | join: ";" %}
 {% assign warningString = warningList | join: ";" %}

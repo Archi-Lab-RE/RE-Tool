@@ -17,6 +17,34 @@ layout: default
     <dt>Stakeholder</dt>
     <dd>{{ stakeholder.name }}</dd>
 
+    {% assign interviewDate = localArtefact.date | date: "%d.%m.%Y" %}
+    <dt>{% t interviews.details %}</dt>
+    <dd>
+        {% t interviews.conducted %} {{ interviewDate }}
+        {% if page.location == "videoconf" %}
+            {% t interviews.videoconf %}.
+        {% else %}
+            {% t interviews.f2f %}.
+        {% endif %}
+        {% if page.duration != Nil %}
+            {% t interviews.lasted %} {{ page.duration }} min.
+        {% endif %}
+        {% if page.questionnaireUrl != Nil %}
+            {% t global.seeAlsoCapital %}
+            <a href="{{ site.url }}{{ page.questionnaireUrl | relative_url }}">{% t interviews.questionnaire %}</a>.
+        {% endif %}
+    </dd>
+
+    <dt>{% t interviews.results %}</dt>
+    <dd>
+        {% t interviews.forTheInterviewExists %}
+        <a href="{{ site.url }}{{ page.transscriptUrl | relative_url }}">{% t interviews.transscript %}</a>
+        {%- if page.questionnaireUrl != Nil -%}
+            &nbsp;{%- t global.andAlso %}
+            <a href="{{ site.url }}{{ page.questionnaireUrl | relative_url }}">{% t interviews.questionnaire %}</a>
+        {%- endif -%}.
+    </dd>
+
     {% include /functions/print-history.html myArtefact=page %}
     {% include /functions/checks/check-interview.html myArtefact=page %}
     {% include /functions/print-detailed-check-messages.html errors=errorString warnings=warningString todos=page.todo %}

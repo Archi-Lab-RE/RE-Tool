@@ -1,13 +1,13 @@
 ---
-acronym: donotdelete_interview_template
+acronym: donotdelete_nnprof1_interview_template
 type: interview
 isTemplate: true
 author: 
     - sbe
 stakeholder: nnProf1
 date: 2021-05-10
-duration: 28:16
-location: Zoom-Meeting
+duration: "28:16"
+location: f2f
 questionnaireUrl: /sources/Questionnaire_nnProf1.pdf
 transcriptUrl: /sources/nnProf1_transkript.pdf
 history:
@@ -20,3 +20,10 @@ history:
 todo:
     - replace by an English version when available  
 ---
+
+## Additional Information
+
+This part can be used to describe additional information about the interview (e.g. specific goals pursued with
+this interview). Usually you can leave this blank.
+
+The interviewers should be listed as authors.

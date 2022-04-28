@@ -1,6 +1,8 @@
 #-------------------
 global:
   for: for
+  seeAlsoCapital: See also
+  andAlso: and also
 #-------------------
 teacherMode:
   exportCSVNavLabel: Export everything as CSV
@@ -22,3 +24,16 @@ interviews:
   transcriptUrlErrMsg: transcriptUrl missing!
   questionnaireUrlErrMsg: questionnaireUrl missing!
   stakeholderPurpose: corresponding stakeholder
+  details: Details
+  dateMissing: Interviews date missing!
+  durationMissing: Interviews duration missing!
+  conducted: The interview was conducted on
+  lasted: It lasted
+  locationErrMsg: The interview location (field 'location') must be specified. Legal options are 'videoconf' or 'f2f'.
+  videoconf: as a video conference
+  f2f: as a f2f meeting
+  with: Interview with
+  results: Results
+  forTheInterviewExists: For the interview, there is
+  transscript: a transscript
+  questionnaire: a questionnaire

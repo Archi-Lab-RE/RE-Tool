@@ -72,7 +72,7 @@ layout: default
                 {% include /functions/get-artefact-name.html myArtefact=item %}
                 <td><a href='{{ site.url }}{{item.url | relative_url }}'>{{ artefactName }} </a></td>
 
-                {% include /functions/resolve-names.html myResponsible=item.author myExclude=page %}
+                {% include /functions/resolve-names.html myAuthor=item.author myExclude=page %}
                 <td>{{ authorString }}</td>
             </tr>
         {% endfor %}

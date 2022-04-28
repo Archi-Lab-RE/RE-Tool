@@ -4,7 +4,7 @@ subtype: person
 acronym: nnProf1
 author: 
     - jsp
-name: n. n. Prof 1
+name: Professor1 (anonymous)
 anonymous: true
 stakeholderRole: 
     - profInf

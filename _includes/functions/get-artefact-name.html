@@ -17,9 +17,8 @@
         {% assign localStakeholderList = site.stakeholders | where: "acronym", localStakeholderRef %}
         {% if localStakeholderList.size > 0 %}
             {% assign localStakeholder = localStakeholderList | first %}
-            {% assign interviewDate = localArtefact.date | date: "%d.%m.%Y" %}
-            {% assign localArtefactName = "Interview mit »" | append: localStakeholder.name |
-                            append: "« (" | append: interviewDate | append: ")" %}
+            {% assign headerStart = site.translations[site.lang].interviews.with %}
+            {% assign localArtefactName = headerStart | append: " »" | append: localStakeholder.name | append: "«"  %}
         {% endif %}
     {% elsif type == "useCaseDiagram" and localArtefact.functionalRequirement %}
         {% assign localFunctionalRequirementRef = localArtefact.functionalRequirement %}
