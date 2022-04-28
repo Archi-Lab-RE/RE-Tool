@@ -135,7 +135,7 @@ survey:
 systemContextElement:
     fullName: "Systemkontext-Element"
     fullNameEn: "System Context Element"
-    sortField: "title"
+    sortField: "name"
     prefix: "SYC"
     collection: "systemContextElements"
     grading:

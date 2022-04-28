@@ -4,11 +4,9 @@ layout: default
 {% assign sortField = site.data.metadata["systemContextElement"].sortField %}
 {% assign collection = site.systemContextElements | sort: sortField %}
 
-<h1>Systemkontext ({{ collection.size }})</h1>
+<h1>{% t systemContext.headerOverview %} ({{ collection.size }})</h1>
 
-<p>
-    Der <b>Systemkontext</b> ist der Teil der Umgebung des Systems, der für die Definition und das Verständnis der Systemanforderungen relevant ist, selbst aber nicht gestalt- oder veränderbar ist
-</p>
+{% t systemContext.summary %}
 
 
 
@@ -18,7 +16,7 @@ layout: default
         <th width="5%"></th>
         <th width="10%">ID</th>
         <th width="60%">Name</th>
-        <th width="60%">Typ</th>
+        <th width="60%">{% t global.type %}</th>
     </tr>
     </thead>
     <tbody>

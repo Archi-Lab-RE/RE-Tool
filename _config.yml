@@ -20,7 +20,7 @@
 title: ArchiLab RE Tool
 email:
 description: Tool to manage requirements for software systems
-url: "https://divekit.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://archi-lab-re.github.io/RE-Tool/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # teacherMode is used for grading - you usually don't need this. Default is false.
 teacherMode: false

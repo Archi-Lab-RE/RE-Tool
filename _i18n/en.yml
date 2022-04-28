@@ -5,6 +5,7 @@ global:
   andAlso: and also
   descriptionCapital: Description
   sources: Sources
+  type: Type
   navbar:
     context: Context
     informal: Informal
@@ -104,6 +105,11 @@ goals:
 #-------------------
 systemContext:
   navLabel: System Context
+  summary: >
+    <p>The <b>system context</b> is that part of the system's environment that is relevant for the definition and
+    understanding of the system requirements, but itself cannot be shaped or changed.</p>
+  headerOverview: System Context Elements
+  header: System Context Element
 #-------------------
 scenarios:
   navLabel: Scenarios

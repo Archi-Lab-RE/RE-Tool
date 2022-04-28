@@ -3,7 +3,6 @@ layout: default
 ---
 
 {% include /functions/print-teacherbuttons.html myArtefact=page %}
-
 {% include /functions/print-page-navigation.html myArtefact=page %}
 
 {% include /functions/get-artefact-name.html myArtefact=page myIdFormat="postfixWithBrackets" %}
@@ -13,13 +12,12 @@ layout: default
 <dl>
     {% include /functions/print-authors.html page=page %}
 
-    <dt>Quellen</dt>
+    <dt>{% t global.sources %}</dt>
     {% for source in page.source %}
         <dd>{{ source }}</dd>
     {% endfor %}
 
     {% include /functions/print-history.html myArtefact=page %}
-
     {% include /functions/checks/check-systemContextElement.html myArtefact=page %}
     {% include /functions/print-detailed-check-messages.html errors=errorString warnings=warningString todos=page.todo %}
 </dl>
