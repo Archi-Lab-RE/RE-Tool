@@ -1,3 +1,1 @@
-# Decision Log
-
-Decision Log for EVATool
+# Now continued in gitlab!!
